@@ -1,0 +1,44 @@
+rabbit1:
+  image: karinakuroda/rabbitmq-cluster
+  hostname: rabbit1
+  environment:
+    - ERLANG_COOKIE=abcdefg
+  ports:
+    - "5673:5672"
+    - "15673:15672"
+rabbit2:
+  image: karinakuroda/rabbitmq-cluster
+  hostname: rabbit2
+  links:
+    - rabbit1
+  environment:
+    - ERLANG_COOKIE=abcdefg
+    - CLUSTER_WITH=rabbit1
+  ports:
+    - "5674:5672"
+    - "15674:15672"
+rabbit3:
+  image: karinakuroda/rabbitmq-cluster
+  hostname: rabbit3
+  links:
+    - rabbit1
+    - rabbit2
+  environment:
+    - ERLANG_COOKIE=abcdefg
+    - CLUSTER_WITH=rabbit1
+  ports:
+    - "5675:5672"
+    - "15675:15672"
+rabbit4:
+  image: karinakuroda/rabbitmq-cluster
+  hostname: rabbit4
+  links:
+    - rabbit1
+    - rabbit2
+    - rabbit3
+  environment:
+    - ERLANG_COOKIE=abcdefg
+    - CLUSTER_WITH=rabbit1
+  ports:
+    - "5676:5672"
+    - "15676:15672"
