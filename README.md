@@ -2,7 +2,7 @@
 RabbitMQ Cluster com Docker
 
 P/ FAZER BUILD:
-docker build -t karinakuroda/rabbitmq-cluster .
+docker build -t karinakuroda/rabbitmq-cluster-win .
 P/ SUBIR NO DOCKER:
 docker-compose up -d
 P/ VISUALIZAR OS LOGS:
